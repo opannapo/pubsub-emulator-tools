@@ -62,6 +62,4 @@ func List(ctx context.Context, psClient pubsub.Client) {
 	for _, t := range subs {
 		log.Println(t)
 	}
-
-	return
 }

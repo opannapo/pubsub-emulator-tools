@@ -1,5 +1,6 @@
-.PHONY: run-pub run-sub run-tools docker-compose-up docker-compose-down
+.PHONY: run-pub run-sub run-tools emulator-compose-up emulator-compose-down
 
+#Application
 run-pub:
 	go run ./pub/main.go $(topic)
 
@@ -8,11 +9,14 @@ run-sub:
 
 run-tools:
 	go run ./tools/main.go
+#Application
 
-docker-compose-up:
-	docker compose up -d
 
-docker-compose-down:
-	docker compose down
+#Pubsub Emulator Setup
+emulator-compose-up:
+	cd emulator && docker compose up -d
 
+emulator-compose-down:
+	cd emulator && docker compose down
+#End Pubsub Emulator Setup
 
