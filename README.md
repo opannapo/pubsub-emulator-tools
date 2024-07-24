@@ -1,6 +1,7 @@
 # Experiment
 
-Setup PubSub Emulator (Docker)
+### PubSub Emulator Setup : 
+(Opt 1) Setup PubSub Emulator (Docker)
 ```docker
 docker pull google/cloud-sdk:emulators
 ```
@@ -8,8 +9,12 @@ docker pull google/cloud-sdk:emulators
 docker run -d -p 8085:8085 google/cloud-sdk:emulators /bin/bash -c "gcloud beta emulators pubsub start --project=test-project-id --host-port='0.0.0.0:8085'"
 ```
 
+(Opt 2) Setup PubSub Emulator (Docker Compose)
+```docker
+docker-compose-up
+```
 
-
+###
 ### Application Usage: 
 #### 1. Export env variables
 ```bash
