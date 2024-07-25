@@ -16,8 +16,6 @@ func Setup(ctx context.Context) {
 
 	result := shared.CreateDockerCompose(projectID, port)
 	fmt.Println("Docker Compose created at ", result)
-
-	//Run compose
 	targetFolder := filepath.Dir(result)
 
 	cmd := exec.Command("docker", "compose", "up", "-d")
@@ -30,11 +28,4 @@ func Setup(ctx context.Context) {
 		fmt.Println("Error executing command:", err)
 		return
 	}
-
-	output, err := cmd.CombinedOutput()
-	if err != nil {
-		fmt.Println("Error executing command:", err)
-		return
-	}
-	fmt.Println(string(output))
 }
