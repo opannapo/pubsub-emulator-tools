@@ -17,13 +17,12 @@ const help = `
 Action List
 [*] Emulator
 	[1] setup-emulator-compose
-	[2] remove-emulator-compose
 [*] Application
-	[3] topic-create
-	[4] topic-list
-	[5] topic-delete
-	[6] subscription-create
-	[7] subscription-list
+	[2] topic-create
+	[3] topic-list
+	[4] topic-delete
+	[5] subscription-create
+	[6] subscription-list
 `
 
 var projectID string
@@ -47,12 +46,11 @@ func main() {
 
 	act = map[int]func(){
 		1: func() { compose.Setup(ctx) },
-		2: func() { compose.Setup(ctx) },
-		3: func() { topic.Create(ctx, *psClient) },
-		4: func() { topic.List(ctx, *psClient) },
-		5: func() { topic.Delete(ctx, *psClient) },
-		6: func() { subscription.Create(ctx, *psClient) },
-		7: func() { subscription.List(ctx, *psClient) },
+		2: func() { topic.Create(ctx, *psClient) },
+		3: func() { topic.List(ctx, *psClient) },
+		4: func() { topic.Delete(ctx, *psClient) },
+		5: func() { subscription.Create(ctx, *psClient) },
+		6: func() { subscription.List(ctx, *psClient) },
 	}
 
 	cliDisplayOpening()
