@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  pubsub-emulator:
+    image: google/cloud-sdk:emulators
+    container_name: pubsub-emulator
+    ports:
+      - "{{.Port}}:8085"
+    command: >
+      /bin/bash -c command: /bin/bash -c "gcloud beta emulators pubsub start --project={{.ProjectID}} --host-port='0.0.0.0:{{.Port}}'"

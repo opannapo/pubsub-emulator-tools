@@ -4,6 +4,7 @@ import (
 	"cloud.google.com/go/pubsub"
 	"context"
 	"fmt"
+	"github.com/opannapo/pubsub-emulator-tools/tools/compose"
 	"github.com/opannapo/pubsub-emulator-tools/tools/subscription"
 	"github.com/opannapo/pubsub-emulator-tools/tools/topic"
 	"google.golang.org/api/option"
@@ -14,11 +15,15 @@ import (
 
 const help = `
 Action List
-	[1] topic-create
-	[2] topic-list
-	[3] topic-delete
-	[4] subscription-create
-	[5] subscription-list
+[*] Emulator
+	[1] setup-emulator-compose
+	[2] remove-emulator-compose
+[*] Application
+	[3] topic-create
+	[4] topic-list
+	[5] topic-delete
+	[6] subscription-create
+	[7] subscription-list
 `
 
 var projectID string
@@ -36,16 +41,18 @@ func main() {
 	}
 	psClient, err := pubsub.NewClient(ctx, projectID, opt...)
 	if err != nil {
-		log.Fatalf("Failed to create client: %v", err)
+		log.Panicf("Failed to create client: %v", err)
 	}
 	defer psClient.Close()
 
 	act = map[int]func(){
-		1: func() { topic.Create(ctx, *psClient) },
-		2: func() { topic.List(ctx, *psClient) },
-		3: func() { topic.Delete(ctx, *psClient) },
-		4: func() { subscription.Create(ctx, *psClient) },
-		5: func() { subscription.List(ctx, *psClient) },
+		1: func() { compose.Setup(ctx) },
+		2: func() { compose.Setup(ctx) },
+		3: func() { topic.Create(ctx, *psClient) },
+		4: func() { topic.List(ctx, *psClient) },
+		5: func() { topic.Delete(ctx, *psClient) },
+		6: func() { subscription.Create(ctx, *psClient) },
+		7: func() { subscription.List(ctx, *psClient) },
 	}
 
 	cliDisplayOpening()
