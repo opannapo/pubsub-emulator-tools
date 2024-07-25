@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/opannapo/pubsub-emulator-tools/shared"
+	"io/ioutil"
 	"log"
 	"net/http"
 )
@@ -47,26 +48,30 @@ func (p *PubSimulator) StartHttp() {
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
-
-	fmt.Printf("Created subscription: %v\n", sub)
 }
 
 func (p *PubSimulator) publishMessage(w http.ResponseWriter, r *http.Request) {
-	msg := r.URL.Query().Get("msg")
-	if msg == "" {
-		http.Error(w, "Missing 'msg' query parameter", http.StatusBadRequest)
+	if r.Method != http.MethodPost {
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
-	result := p.PsClient.Topic(p.topic).Publish(p.Ctx, &pubsub.Message{
-		Data: []byte(msg),
-	})
+	body, err := ioutil.ReadAll(r.Body)
+	if err != nil {
+		http.Error(w, "Failed to read request body", http.StatusBadRequest)
+		return
+	}
+	defer r.Body.Close()
 
-	id, err := result.Get(context.Background())
+	result := p.PsClient.Topic(p.topic).Publish(p.Ctx, &pubsub.Message{
+		Data: body,
+	})
+	id, err := result.Get(p.Ctx)
 	if err != nil {
 		http.Error(w, fmt.Sprintf("Failed to publish message: %v", err), http.StatusInternalServerError)
 		return
 	}
 
-	fmt.Fprintf(w, "Published a message; msg ID: %v\n", id)
+	ok, _ := fmt.Fprintf(w, "Published a message; msg ID: %v\n", id)
+	fmt.Println("success publish message ID:", ok)
 }
