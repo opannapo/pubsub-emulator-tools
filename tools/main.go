@@ -24,6 +24,9 @@ Action List
 	[5] subscription-create
 	[6] subscription-list
 	[7] subscription-delete
+[*] Simulator
+	[8] Pub
+	[9] Sub
 `
 
 var projectID string
