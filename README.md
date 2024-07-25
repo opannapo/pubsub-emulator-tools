@@ -31,13 +31,20 @@ ___
 Output :
 ```bash
 Action List
-        [1] topic-create
-        [2] topic-list
-        [3] topic-delete
-        [4] subscription-create
-        [5] subscription-list
+[*] Emulator
+        [1] setup-emulator-compose
+[*] Application
+        [2] topic-create
+        [3] topic-list
+        [4] topic-delete
+        [5] subscription-create
+        [6] subscription-list
+        [7] subscription-delete
+[*] Simulator
+        [8] start-pub-http
+        [9] start-sub-cli
 
-Action number :
+Action number : 
 ```
 
 #
@@ -45,13 +52,20 @@ Action number :
 #### Action [topic-create]
 ```bash
 Action List
-        [1] topic-create
-        [2] topic-list
-        [3] topic-delete
-        [4] subscription-create
-        [5] subscription-list
+[*] Emulator
+        [1] setup-emulator-compose
+[*] Application
+        [2] topic-create
+        [3] topic-list
+        [4] topic-delete
+        [5] subscription-create
+        [6] subscription-list
+        [7] subscription-delete
+[*] Simulator
+        [8] start-pub-http
+        [9] start-sub-cli
 
-Action number : 1
+Action number : 2
 ```
 ```bash
 [topic-create]  topic name  : test-topic
@@ -72,13 +86,20 @@ Back to main menu, type **Y** / **y**
 #### Action [topic-list]
 ```bash
 Action List
-        [1] topic-create
-        [2] topic-list
-        [3] topic-delete
-        [4] subscription-create
-        [5] subscription-list
+[*] Emulator
+        [1] setup-emulator-compose
+[*] Application
+        [2] topic-create
+        [3] topic-list
+        [4] topic-delete
+        [5] subscription-create
+        [6] subscription-list
+        [7] subscription-delete
+[*] Simulator
+        [8] start-pub-http
+        [9] start-sub-cli
 
-Action number : 2
+Action number : 3
 ```
 
 Output :
