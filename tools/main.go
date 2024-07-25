@@ -5,6 +5,7 @@ import (
 	"context"
 	"fmt"
 	"github.com/opannapo/pubsub-emulator-tools/tools/compose"
+	"github.com/opannapo/pubsub-emulator-tools/tools/simulator"
 	"github.com/opannapo/pubsub-emulator-tools/tools/subscription"
 	"github.com/opannapo/pubsub-emulator-tools/tools/topic"
 	"google.golang.org/api/option"
@@ -25,8 +26,8 @@ Action List
 	[6] subscription-list
 	[7] subscription-delete
 [*] Simulator
-	[8] Pub
-	[9] Sub
+	[8] start-pub-http
+	[9] start-sub-cli
 `
 
 var projectID string
@@ -48,6 +49,8 @@ func main() {
 	}
 	defer psClient.Close()
 
+	pubSimulator, _ := simulator.NewPubSimulator(ctx, psClient)
+	subSimulator, _ := simulator.NewSubSimulator(ctx, psClient)
 	act = map[int]func(){
 		1: func() { compose.Setup(ctx) },
 		2: func() { topic.Create(ctx, *psClient) },
@@ -56,6 +59,8 @@ func main() {
 		5: func() { subscription.Create(ctx, *psClient) },
 		6: func() { subscription.List(ctx, *psClient) },
 		7: func() { subscription.Delete(ctx, *psClient) },
+		8: func() { pubSimulator.StartHttp() },
+		9: func() { subSimulator.StartCli() },
 	}
 
 	cliDisplayOpening()
