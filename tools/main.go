@@ -23,6 +23,7 @@ Action List
 	[4] topic-delete
 	[5] subscription-create
 	[6] subscription-list
+	[7] subscription-delete
 `
 
 var projectID string
@@ -51,6 +52,7 @@ func main() {
 		4: func() { topic.Delete(ctx, *psClient) },
 		5: func() { subscription.Create(ctx, *psClient) },
 		6: func() { subscription.List(ctx, *psClient) },
+		7: func() { subscription.Delete(ctx, *psClient) },
 	}
 
 	cliDisplayOpening()

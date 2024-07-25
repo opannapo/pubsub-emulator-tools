@@ -63,3 +63,15 @@ func List(ctx context.Context, psClient pubsub.Client) {
 		log.Println(t)
 	}
 }
+
+func Delete(ctx context.Context, psClient pubsub.Client) {
+	shared.IOClear()
+	List(ctx, psClient)
+	subName := shared.IOStdinRead("[subscription-delete] subscription name : ")
+
+	sub := psClient.Subscription(subName)
+	if err := sub.Delete(ctx); err != nil {
+		log.Fatalf("Failed to delete subscription : %v", err)
+	}
+	fmt.Printf("Subscription %v deleted.\n", subName)
+}
