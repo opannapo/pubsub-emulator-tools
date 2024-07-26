@@ -15,7 +15,7 @@ https://docs.docker.com/desktop/install/mac-install/
 
 ```
 export PUBSUB_EMULATOR_HOST=localhost:8085
-export PUBSUB_PROJECT_ID=opannapo-project-id
+export PUBSUB_PROJECT_ID=project1
 ```
 3. Install pubsub-emulator-tools Tolls
 ```bash
