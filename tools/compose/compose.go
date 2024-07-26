@@ -19,11 +19,13 @@ func Setup(ctx context.Context) {
 	targetFolder := filepath.Dir(result)
 
 	cmd := exec.Command("docker", "compose", "up", "-d")
+	cmd.WaitDelay = 500
 	cmd.Dir = targetFolder
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
 	err := cmd.Run()
+
 	if err != nil {
 		fmt.Println("Error executing command:", err)
 		return
