@@ -23,3 +23,15 @@ func IOStdinRead(msg string) string {
 	paramSub := strings.Trim(key, "\n")
 	return paramSub
 }
+
+func IOStdinScan[T int | string](msg string) (T, error) {
+	fmt.Print(msg, " : ")
+	var in T
+	_, err := fmt.Scanf("%v", &in)
+	if err != nil {
+		log.Fatalln(err)
+		return in, err
+	}
+
+	return in, nil
+}

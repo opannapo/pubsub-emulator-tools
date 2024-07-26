@@ -4,6 +4,7 @@ import (
 	"cloud.google.com/go/pubsub"
 	"context"
 	"fmt"
+	"github.com/opannapo/pubsub-emulator-tools/shared"
 	"github.com/opannapo/pubsub-emulator-tools/tools/compose"
 	"github.com/opannapo/pubsub-emulator-tools/tools/simulator"
 	"github.com/opannapo/pubsub-emulator-tools/tools/subscription"
@@ -65,16 +66,16 @@ func main() {
 
 	cliDisplayOpening()
 }
-
 func cliDisplayOpening() {
 	fmt.Println(help)
-	in := readerActionNumber()
+	in, err := shared.IOStdinScan[int]("Action number : ")
+	if err != nil {
+		panic(err)
+	}
 	handlingAction(in)
 }
 func cliDisplayAsk() {
-	fmt.Print("Continue [Y/N] ? ")
-	var in string
-	_, err := fmt.Scanf("%s", &in)
+	in, err := shared.IOStdinScan[string]("Continue [Y/N] ? : ")
 	if err != nil {
 		panic(err)
 	}
@@ -86,16 +87,6 @@ func cliDisplayAsk() {
 		fmt.Printf("\x1bc")
 		os.Exit(1)
 	}
-}
-func readerActionNumber() int {
-	fmt.Print("Action number : ")
-	var in int
-	_, err := fmt.Scanf("%d", &in)
-	if err != nil {
-		return 0
-	}
-
-	return in
 }
 func handlingAction(in int) {
 	defer func() {
