@@ -1,14 +1,8 @@
 .PHONY: run-pub run-sub run-tools emulator-compose-up emulator-compose-down
 
 #Application
-run-pub:
-	go run ./pub/main.go $(topic)
-
-run-sub:
-	go run ./sub/main.go
-
 run-tools:
-	go run ./tools/main.go
+	go run ./main.go
 #Application
 
 
