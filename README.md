@@ -168,38 +168,126 @@ Continue [Y/N] ?
 ---
 #### Action [topic-delete]
 ```bash
-  //TODO
+  Action List
+[*] Emulator
+        [1] setup-emulator-compose
+[*] Application
+        [2] topic-create
+        [3] topic-list
+        [4] topic-delete
+        [5] subscription-create
+        [6] subscription-list
+        [7] subscription-delete
+[*] Simulator
+        [8] start-pub-http
+        [9] start-sub-cli
+
+Action number : 4
 ```
----
+Output
+```bash
+2024/07/26 11:09:18 projects/opannapo-project-id/topics/sub1-topic1
+2024/07/26 11:09:18 projects/opannapo-project-id/topics/test1
+2024/07/26 11:09:18 projects/opannapo-project-id/topics/test2
+[topic-delete] topic name  : test1
+Topic test1 deleted.
+Continue [Y/N] ? : 
+```
 
 ---
 #### Action [subscription-create]
 ```bash
-  //TODO
+  Action number : 5
+```
+Output
+```bash
+[subscription-create] subscription name  : sub2
+[subscription-create]   topic name  : sub2-topic2
+Created subscription: projects/opannapo-project-id/subscriptions/sub2
+Continue [Y/N] ? : 
 ```
 ---
 
 #### Action [subscription-list]
 ```bash
-  //TODO
+  Action number : 6
+```
+Output:
+```bash
+2024/07/26 11:11:39 projects/opannapo-project-id/subscriptions/sub1
+2024/07/26 11:11:39 projects/opannapo-project-id/subscriptions/sub2
+Continue [Y/N] ? : 
 ```
 
 ---
 #### Action [subscription-delete]
 ```bash
-  //TODO
+  Action number : 7
+```
+Output:
+```bash
+2024/07/26 11:12:11 projects/opannapo-project-id/subscriptions/sub1
+2024/07/26 11:12:11 projects/opannapo-project-id/subscriptions/sub2
+[subscription-delete] subscription name : sub1
+Subscription sub1 deleted.
+Continue [Y/N] ? : 
 ```
 ---
 
 #### Action [start-pub-http]
 ```bash
-  //TODO
+  Action number : 8
+```
+Output:
+```bash
+[start-pub-http] port  : 8080
+[start-pub-http] subscription ID  : sub2
+[start-pub-http] topic  : sub2-topic2
+2024/07/26 11:16:42 Starting server on port 8080...
+```
+#### Simulator Testing :
+##### 1. Postman
+Url : ```POST localhost:8080/publish```
+<br>Payload :
+```json
+{
+    "first_name":"John",
+    "last_name":"Doe"
+}
+```
+
+##### 2. CUrl
+```bash
+curl --location 'localhost:8080/publish' \
+--header 'Content-Type: application/json' \
+--data '{
+    "first_name":"John",
+    "last_name":"Doe"
+}'
 ```
 ---
 
 #### Action [start-sub-cli]
 ```bash
-  //TODO
+  Action number : 9
+```
+Output:
+```bash
+[start-sub-cli] subscription ID  : sub2
+listening for messages ...
+```
+
+```bash
+[start-sub-cli] subscription ID  : sub2
+listening for messages ...
+Received message: {
+    "first_name":"John1",
+    "last_name":"Doe1"
+}
+Received message: {
+    "first_name":"John2",
+    "last_name":"Doe2"
+}
 ```
 ---
 

@@ -31,6 +31,7 @@ func (s *SubSimulator) StartCli() {
 	s.sub = sub
 
 	subscription := s.PsClient.Subscription(s.sub)
+	fmt.Println("listening for messages ...")
 	err := subscription.Receive(context.Background(), func(ctx context.Context, msg *pubsub.Message) {
 		fmt.Printf("Received message: %s\n", string(msg.Data))
 		msg.Ack()

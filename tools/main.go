@@ -81,7 +81,7 @@ func cliDisplayAsk() {
 	}
 
 	if in == strings.ToLower("y") {
-		fmt.Printf("\x1bc")
+		shared.IOClear()
 		cliDisplayOpening()
 	} else {
 		fmt.Printf("\x1bc")
@@ -97,7 +97,7 @@ func handlingAction(in int) {
 	if ok {
 		val()
 	} else {
-		fmt.Printf("\x1bc")
+		shared.IOClear()
 		cliDisplayOpening()
 	}
 }

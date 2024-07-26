@@ -25,7 +25,7 @@ func IOStdinRead(msg string) string {
 }
 
 func IOStdinScan[T int | string](msg string) (T, error) {
-	fmt.Print(msg, " : ")
+	fmt.Print(msg)
 	var in T
 	_, err := fmt.Scanf("%v", &in)
 	if err != nil {
