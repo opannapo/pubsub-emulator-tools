@@ -1,13 +1,14 @@
 package shared
 
 import (
+	"embed"
 	"fmt"
 	"os"
 	"path/filepath"
 	"text/template"
 )
 
-func CreateDockerCompose(projectID, port string) (result string) {
+func CreateDockerCompose(projectID, port string, fs embed.FS) (result string) {
 	type DockerCompose struct {
 		Image         string
 		ContainerName string
@@ -22,7 +23,7 @@ func CreateDockerCompose(projectID, port string) (result string) {
 		ProjectID:     projectID,
 	}
 
-	tmpl, err := template.ParseFiles("./emulator/docker-compose.tmpl")
+	tmpl, err := template.ParseFS(fs, "templates/docker-compose.tmpl")
 	if err != nil {
 		panic(err)
 	}
@@ -33,7 +34,7 @@ func CreateDockerCompose(projectID, port string) (result string) {
 		return
 	}
 
-	nDir := filepath.Join(homeDir, ".tmp-emulator")
+	nDir := filepath.Join(homeDir, "pubsub-emulator-tools")
 	nFile := filepath.Join(nDir, "docker-compose.yml")
 
 	err = os.MkdirAll(nDir, os.ModePerm)

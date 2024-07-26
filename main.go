@@ -3,6 +3,7 @@ package main
 import (
 	"cloud.google.com/go/pubsub"
 	"context"
+	"embed"
 	"fmt"
 	"github.com/opannapo/pubsub-emulator-tools/shared"
 	"github.com/opannapo/pubsub-emulator-tools/tools/compose"
@@ -14,6 +15,9 @@ import (
 	"os"
 	"strings"
 )
+
+//go:embed  templates/*
+var tmplFS embed.FS
 
 const help = `
              _               _                                _       _                  _              _     
@@ -44,13 +48,14 @@ var act = map[int]func(){}
 
 func main() {
 	ctx := context.Background()
+
 	projectID = os.Getenv("PUBSUB_PROJECT_ID")
 	if projectID == "" {
 		panic("Empty PUBSUB_PROJECT_ID")
 	}
 
 	opt := []option.ClientOption{
-		option.WithoutAuthentication(), //option.WithEndpoint("0.0.0.0:8085"),
+		option.WithoutAuthentication(),
 	}
 	psClient, err := pubsub.NewClient(ctx, projectID, opt...)
 	if err != nil {
@@ -61,7 +66,7 @@ func main() {
 	pubSimulator, _ := simulator.NewPubSimulator(ctx, psClient)
 	subSimulator, _ := simulator.NewSubSimulator(ctx, psClient)
 	act = map[int]func(){
-		1: func() { compose.Setup(ctx) },
+		1: func() { compose.Setup(ctx, tmplFS) },
 		2: func() { topic.Create(ctx, *psClient) },
 		3: func() { topic.List(ctx, *psClient) },
 		4: func() { topic.Delete(ctx, *psClient) },
