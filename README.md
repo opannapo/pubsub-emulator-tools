@@ -103,6 +103,8 @@ CONTAINER ID   IMAGE                        COMMAND                  CREATED    
 lion@M1 ~ % 
 ```
 
+Check via browser: http://localhost:8085/
+
 ---
 
 #### Action topic-create :
