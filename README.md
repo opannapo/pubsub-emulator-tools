@@ -202,3 +202,13 @@ Continue [Y/N] ?
   //TODO
 ```
 ---
+
+
+### TODO :
+| Item                                   |
+|----------------------------------------|  
+| Graceful Shutdown                      |
+| Create Topic with configuration        |
+| Create Subscription with configuration |
+| Proper error handling                  |
+
