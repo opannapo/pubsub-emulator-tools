@@ -16,31 +16,18 @@ import (
 	"strings"
 )
 
+const version = "v1.0.3"
+
 //go:embed  templates/*
 var tmplFS embed.FS
-
-const help = `
+var opening = `
              _               _                                _       _                  _              _     
  _ __  _   _| |__  ___ _   _| |__         ___ _ __ ___  _   _| | __ _| |_ ___  _ __     | |_ ___   ___ | |___ 
 | '_ \| | | | '_ \/ __| | | | '_ \ _____ / _ | '_ ' _ \| | | | |/ _' | __/ _ \| '_______| __/ _ \ / _ \| / __|
 | |_) | |_| | |_) \__ | |_| | |_) |_____|  __| | | | | | |_| | | (_| | || (_) | | |_____| || (_) | (_) | \__ \
 | .__/ \__,_|_.__/|___/\__,_|_.__/       \___|_| |_| |_|\__,_|_|\__,_|\__\___/|_|        \__\___/ \___/|_|___/
-|_| v1.0.3
+|_| v:%s  PID:%d
 
-
-Action List :
-[*] Emulator
-	[1] setup-emulator-compose
-[*] Application
-	[2] topic-create
-	[3] topic-list
-	[4] topic-delete
-	[5] subscription-create
-	[6] subscription-list
-	[7] subscription-delete
-[*] Simulator
-	[8] start-pub-http
-	[9] start-sub-cli
 `
 
 var projectID string
@@ -79,8 +66,28 @@ func main() {
 
 	cliDisplayOpening()
 }
+func generateLine(length int) string {
+	return strings.Repeat("-", length)
+}
 func cliDisplayOpening() {
-	fmt.Println(help)
+	pid := os.Getpid()
+	fmt.Printf(fmt.Sprintf(opening, version, pid))
+
+	col1Width := 30
+	col2Width := 30
+	col3Width := 30
+
+	fmt.Printf("%s\n", generateLine(col1Width+col2Width+col3Width))
+	fmt.Printf("%-*s %-*s %-*s\n", col1Width, "Emulator", col2Width, "Application", col3Width, "Simulator")
+	fmt.Printf("%s\n", generateLine(col1Width+col2Width+col3Width))
+
+	fmt.Printf("%-*s %-*s %-*s\n", col1Width, "[1] setup-emulator-compose", col2Width, "[2] topic-create", col3Width, "[8] start-pub-http")
+	fmt.Printf("%-*s %-*s %-*s\n", col1Width, "", col2Width, "[3] topic-list", col3Width, "[9] start-sub-cli")
+	fmt.Printf("%-*s %-*s %-*s\n", col1Width, "", col2Width, "[4] topic-delete", col3Width, "")
+	fmt.Printf("%-*s %-*s %-*s\n", col1Width, "", col2Width, "[5] subscription-create", col3Width, "")
+	fmt.Printf("%-*s %-*s %-*s\n", col1Width, "", col2Width, "[6] subscription-list", col3Width, "")
+	fmt.Printf("%-*s %-*s %-*s\n", col1Width, "", col2Width, "[7] subscription-delete", col3Width, "")
+
 	in, err := shared.IOStdinScan[int]("Action number : ")
 	if err != nil {
 		panic(err)
