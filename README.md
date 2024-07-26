@@ -26,40 +26,44 @@ ___
 ### Application Usage :
 #### Main Menu:
 ```bash
-Action List
-[*] Emulator
-        [1] setup-emulator-compose
-[*] Application
-        [2] topic-create
-        [3] topic-list
-        [4] topic-delete
-        [5] subscription-create
-        [6] subscription-list
-        [7] subscription-delete
-[*] Simulator
-        [8] start-pub-http
-        [9] start-sub-cli
+             _               _                                _       _                  _              _     
+ _ __  _   _| |__  ___ _   _| |__         ___ _ __ ___  _   _| | __ _| |_ ___  _ __     | |_ ___   ___ | |___ 
+| '_ \| | | | '_ \/ __| | | | '_ \ _____ / _ | '_ ' _ \| | | | |/ _' | __/ _ \| '_______| __/ _ \ / _ \| / __|
+| |_) | |_| | |_) \__ | |_| | |_) |_____|  __| | | | | | |_| | | (_| | || (_) | | |_____| || (_) | (_) | \__ \
+| .__/ \__,_|_.__/|___/\__,_|_.__/       \___|_| |_| |_|\__,_|_|\__,_|\__\___/|_|        \__\___/ \___/|_|___/
+|_| v:v1.0.4  PID:112436
 
+------------------------------------------------------------------------------------------
+Emulator                       Application                    Simulator                     
+------------------------------------------------------------------------------------------
+[1] setup-emulator-compose     [2] topic-create               [8] start-pub-http            
+                               [3] topic-list                 [9] start-sub-cli             
+                               [4] topic-delete                                             
+                               [5] subscription-create                                      
+                               [6] subscription-list                                        
+                               [7] subscription-delete                                      
 Action number : 
 ```
 --- 
 
 #### Action setup-emulator-compose :
 ```bash
-Action List
-[*] Emulator
-        [1] setup-emulator-compose
-[*] Application
-        [2] topic-create
-        [3] topic-list
-        [4] topic-delete
-        [5] subscription-create
-        [6] subscription-list
-        [7] subscription-delete
-[*] Simulator
-        [8] start-pub-http
-        [9] start-sub-cli
+             _               _                                _       _                  _              _     
+ _ __  _   _| |__  ___ _   _| |__         ___ _ __ ___  _   _| | __ _| |_ ___  _ __     | |_ ___   ___ | |___ 
+| '_ \| | | | '_ \/ __| | | | '_ \ _____ / _ | '_ ' _ \| | | | |/ _' | __/ _ \| '_______| __/ _ \ / _ \| / __|
+| |_) | |_| | |_) \__ | |_| | |_) |_____|  __| | | | | | |_| | | (_| | || (_) | | |_____| || (_) | (_) | \__ \
+| .__/ \__,_|_.__/|___/\__,_|_.__/       \___|_| |_| |_|\__,_|_|\__,_|\__\___/|_|        \__\___/ \___/|_|___/
+|_| v:v1.0.4  PID:112436
 
+------------------------------------------------------------------------------------------
+Emulator                       Application                    Simulator                     
+------------------------------------------------------------------------------------------
+[1] setup-emulator-compose     [2] topic-create               [8] start-pub-http            
+                               [3] topic-list                 [9] start-sub-cli             
+                               [4] topic-delete                                             
+                               [5] subscription-create                                      
+                               [6] subscription-list                                        
+                               [7] subscription-delete                                      
 Action number : 1
 ```
 ```bash
@@ -109,20 +113,22 @@ Check via browser: http://localhost:8085/
 
 #### Action topic-create :
 ```bash
-Action List
-[*] Emulator
-        [1] setup-emulator-compose
-[*] Application
-        [2] topic-create
-        [3] topic-list
-        [4] topic-delete
-        [5] subscription-create
-        [6] subscription-list
-        [7] subscription-delete
-[*] Simulator
-        [8] start-pub-http
-        [9] start-sub-cli
+             _               _                                _       _                  _              _     
+ _ __  _   _| |__  ___ _   _| |__         ___ _ __ ___  _   _| | __ _| |_ ___  _ __     | |_ ___   ___ | |___ 
+| '_ \| | | | '_ \/ __| | | | '_ \ _____ / _ | '_ ' _ \| | | | |/ _' | __/ _ \| '_______| __/ _ \ / _ \| / __|
+| |_) | |_| | |_) \__ | |_| | |_) |_____|  __| | | | | | |_| | | (_| | || (_) | | |_____| || (_) | (_) | \__ \
+| .__/ \__,_|_.__/|___/\__,_|_.__/       \___|_| |_| |_|\__,_|_|\__,_|\__\___/|_|        \__\___/ \___/|_|___/
+|_| v:v1.0.4  PID:112436
 
+------------------------------------------------------------------------------------------
+Emulator                       Application                    Simulator                     
+------------------------------------------------------------------------------------------
+[1] setup-emulator-compose     [2] topic-create               [8] start-pub-http            
+                               [3] topic-list                 [9] start-sub-cli             
+                               [4] topic-delete                                             
+                               [5] subscription-create                                      
+                               [6] subscription-list                                        
+                               [7] subscription-delete                                      
 Action number : 2
 ```
 ```bash
@@ -143,20 +149,22 @@ Continue [Y/N] ?
 #### Action [topic-list]
 
 ```bash
-Action List
-[*] Emulator
-        [1] setup-emulator-compose
-[*] Application
-        [2] topic-create
-        [3] topic-list
-        [4] topic-delete
-        [5] subscription-create
-        [6] subscription-list
-        [7] subscription-delete
-[*] Simulator
-        [8] start-pub-http
-        [9] start-sub-cli
+             _               _                                _       _                  _              _     
+ _ __  _   _| |__  ___ _   _| |__         ___ _ __ ___  _   _| | __ _| |_ ___  _ __     | |_ ___   ___ | |___ 
+| '_ \| | | | '_ \/ __| | | | '_ \ _____ / _ | '_ ' _ \| | | | |/ _' | __/ _ \| '_______| __/ _ \ / _ \| / __|
+| |_) | |_| | |_) \__ | |_| | |_) |_____|  __| | | | | | |_| | | (_| | || (_) | | |_____| || (_) | (_) | \__ \
+| .__/ \__,_|_.__/|___/\__,_|_.__/       \___|_| |_| |_|\__,_|_|\__,_|\__\___/|_|        \__\___/ \___/|_|___/
+|_| v:v1.0.4  PID:112436
 
+------------------------------------------------------------------------------------------
+Emulator                       Application                    Simulator                     
+------------------------------------------------------------------------------------------
+[1] setup-emulator-compose     [2] topic-create               [8] start-pub-http            
+                               [3] topic-list                 [9] start-sub-cli             
+                               [4] topic-delete                                             
+                               [5] subscription-create                                      
+                               [6] subscription-list                                        
+                               [7] subscription-delete                                      
 Action number : 3
 ```
 Output :
@@ -173,20 +181,22 @@ Continue [Y/N] ?
 ---
 #### Action [topic-delete]
 ```bash
-  Action List
-[*] Emulator
-        [1] setup-emulator-compose
-[*] Application
-        [2] topic-create
-        [3] topic-list
-        [4] topic-delete
-        [5] subscription-create
-        [6] subscription-list
-        [7] subscription-delete
-[*] Simulator
-        [8] start-pub-http
-        [9] start-sub-cli
+             _               _                                _       _                  _              _     
+ _ __  _   _| |__  ___ _   _| |__         ___ _ __ ___  _   _| | __ _| |_ ___  _ __     | |_ ___   ___ | |___ 
+| '_ \| | | | '_ \/ __| | | | '_ \ _____ / _ | '_ ' _ \| | | | |/ _' | __/ _ \| '_______| __/ _ \ / _ \| / __|
+| |_) | |_| | |_) \__ | |_| | |_) |_____|  __| | | | | | |_| | | (_| | || (_) | | |_____| || (_) | (_) | \__ \
+| .__/ \__,_|_.__/|___/\__,_|_.__/       \___|_| |_| |_|\__,_|_|\__,_|\__\___/|_|        \__\___/ \___/|_|___/
+|_| v:v1.0.4  PID:112436
 
+------------------------------------------------------------------------------------------
+Emulator                       Application                    Simulator                     
+------------------------------------------------------------------------------------------
+[1] setup-emulator-compose     [2] topic-create               [8] start-pub-http            
+                               [3] topic-list                 [9] start-sub-cli             
+                               [4] topic-delete                                             
+                               [5] subscription-create                                      
+                               [6] subscription-list                                        
+                               [7] subscription-delete                                      
 Action number : 4
 ```
 Output
